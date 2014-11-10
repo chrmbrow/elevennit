@@ -1,0 +1,10 @@
+<h1>Posts</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <div class="title"><a href="<%= post.link %>" title="<%= post.title %>"><%= post.title %></a></div>
+      <div class="tagline" title="<%= post.created_at%>">Submitted at: <%= time_ago_in_words(post.created_at) %> ago</div>
+    </li>
+  <% end %>
+</ul>
