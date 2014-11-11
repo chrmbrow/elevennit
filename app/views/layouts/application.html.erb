@@ -21,15 +21,15 @@
           <main>
             <% flash.each do |k, v| %>
               <% if v.is_a?(Array) %>
-                <%= content_tag :div, class: v do %>
+                <%= content_tag :div, class: "alert #{flash_class(k)}" do %>
                   <ul>
                     <% v.each do |msg| %>
-                      <%= content_tag :div, msg, class: k %>
+                      <%= content_tag :li, msg %>
                     <% end %>
                   </ul>
                 <% end %>
               <% else %>
-                <%= content_tag :div, v, class: k %>
+                <%= content_tag :div, v, class: "alert #{flash_class(k)}" %>
               <% end %>
             <% end %>
             <!-- BEGIN main content -->
