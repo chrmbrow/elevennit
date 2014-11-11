@@ -19,6 +19,9 @@
       <div class="row">
         <div class="col-xs-8">
           <main>
+            <% flash.each do |k, v| %>
+              <%= content_tag :div, v, {class: k} %>
+            <% end %>
             <!-- BEGIN main content -->
             <%= yield %>
             <!-- END main content -->

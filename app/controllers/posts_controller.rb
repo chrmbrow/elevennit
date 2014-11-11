@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    render :index
   end
 
   def new
@@ -8,9 +9,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(params.require(:post).permit(:title, :link, :body))
-    post.save
-    redirect_to posts_path
+    @post = Post.new(params.require(:post).permit(:title, :link, :body))
+    if @post.save
+      redirect_to new_post_path, flash: { notice: 'Post successfully added.' }
+    else
+      flash.now[:error] = "Invalid submission."
+      render :new
+    end
   end
 
 end
