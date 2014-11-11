@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
-  validates :title, length: { maximum: 255 }
-  validates :link, length: { maximum: 255 }
+  validates :title, length: { maximum: 255 }, presence: true
+  validates :link, length: { maximum: 255 }, presence: true
 end
