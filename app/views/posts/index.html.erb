@@ -1,7 +1,17 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <div class="title"><a href="<%= post.link %>" title="<%= post.title %>"><%= post.title %></a></div>
+      <!-- Link to pages/show if it's a text post -->
+      <!-- Otherwise, link to post.link -->
+      <div class="title">
+        <% if post.text? %>
+          <%= link_to(post.title, post_path(post.id)) %></a>
+        <% elsif post.link? %>
+          <%= link_to(post.title, post.link) %></a>
+        <% else %>
+          @post.title
+        <% end %>
+      </div>
       <div class="tagline" title="<%= post.created_at%>">Submitted at: <%= time_ago_in_words(post.created_at) %> ago</div>
     </li>
   <% end %>
