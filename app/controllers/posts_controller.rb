@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to new_post_path, flash: { notice: 'Post successfully added.' }
     else
-      flash.now[:error] = "Invalid submission."
+      flash.now[:error] = @post.errors.full_messages
       render :new
     end
   end
