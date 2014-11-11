@@ -39,7 +39,8 @@
         </div>
         <div class="col-xs-4">
           <nav id="sidebar">
-            <%= link_to('New Post', new_post_path) %>
+            <%= link_to('Submit a New Link', new_post_path) %>
+            <%= link_to('Submit a New Post', new_post_path(post_type: :text)) %>
           </nav>
         </div>
       </div>

@@ -7,14 +7,16 @@
   </fieldset>
 
   <fieldset>
+  <% if f.object.link? %>
     <%= f.label :link %>
     <%= f.text_field :link, :required => true %>
+  <% else %>
+    <%= f.label :body %>
+    <%= f.text_area :body, :required => true %>
+  <% end %>
   </fieldset>
 
-  <!-- <fieldset>
-    <%# f.label :body %>
-    <%# f.text_area :body, :required => true %>
-  </fieldset> -->
+  <%= f.hidden_field :post_type %>
 
   <%= f.submit %>
 <% end %>
