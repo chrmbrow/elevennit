@@ -1,16 +1,8 @@
 <ul class="posts">
   <% @posts.each do |post| %>
     <li>
-      <!-- Link to pages/show if it's a text post -->
-      <!-- Otherwise, link to post.link -->
-      <%= post_title_link(post) %>
-      <div class="tagline" title="<%= post.created_at%>">Submitted at: <%= time_ago_in_words(post.created_at) %> ago</div>
-      <ul class="actions">
-        <li><%= link_to 'edit', edit_post_path(post) %></li>
-        <li>
-          <%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' } %>
-        </li>
-      </ul>
+      <%= render('heading', {post: post}) %>
+      <%= render('actions', {post: post}) %>
     </li>
   <% end %>
 </ul>
