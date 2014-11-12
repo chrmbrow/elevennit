@@ -10,6 +10,16 @@
   <div class="container wrap">
     <div class="row">
       <div class="col-xs-12">
+        <nav id="categories">
+          <ul class="category-links">
+            <% Category.all.each_with_index do |c, i| -%>
+              <% if i > 0 -%>
+                <span class="separator">-</span>
+              <% end %>
+              <li><%= link_to c.name, category_path(c) %></li>
+            <% end %>
+          </ul>
+        </nav>
         <header>
           <%= link_to("Elevennit", root_path) %>
         </header>
