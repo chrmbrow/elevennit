@@ -5,3 +5,8 @@
   <h2> <%= @category.title %></h2>
   <div class="description"><%= @category.description %></div>
 </div>
+
+<hr>
+
+<h3>Related Posts</h3>
+<%= render('posts/list', {posts: @category.posts}) %>
