@@ -7,4 +7,9 @@ class Post < ActiveRecord::Base
   enum post_type: [:link, :text]
 
   belongs_to :category
+  default_scope { order(:created_at => :desc) }
+  scope :added_today, -> { where('created_at > ?', Time.now.beginning_of_day) }
+  scope :with_categories, -> { includes(:category) }
+
+  self.per_page = 10
 end
