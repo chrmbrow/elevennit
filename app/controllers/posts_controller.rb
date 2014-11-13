@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.with_categories.page(params[:page])
+    @posts = Post.with_categories.with_users.page(params[:page])
     # scopes can be chained as well
     # @posts = Post.with_categories.added_today
     render :index
@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       redirect_to new_post_path, flash: { notice: 'Post successfully added.' }
     else
