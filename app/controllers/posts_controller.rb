@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.with_categories.with_users.page(params[:page])
+    @posts = Post.with_categories.with_users.includes(:comment_threads).page(params[:page])
     # scopes can be chained as well
     # @posts = Post.with_categories.added_today
     render :index
