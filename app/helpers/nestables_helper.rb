@@ -6,7 +6,7 @@ module NestablesHelper
     return '' if objects.size == 0
 
     if options[:id].present?
-      output = "<ol id=\"#{options.fetch(:id)}\" class=\"#{options.fetch(:class)}\">"
+      output = "<ol id=\"#{options.fetch(:id)}\">"
     else
       output = '<ol>'
     end
